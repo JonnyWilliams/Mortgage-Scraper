@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup          # For processing HTML
 import urllib2
 from mortgage import mortgage
 import time
+import re
 
 class scrapeMortgage:
 
@@ -124,7 +125,10 @@ class scrapeMortgage:
         sec = self.soup.findAll("div", { "class" : "info-panel" })[1]
         table = sec.find("table", { "class" : "dash-table" })
         totAmount = table.findAll("span")[2].contents[0]
-        return totAmount
+        
+        non_decimal = re.compile(r'[^\d.]+')
+        totAmount2 = non_decimal.sub('', totAmount)
+        return totAmount2
 
     def extractTotalAmountOfInterest(self):
 
