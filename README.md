@@ -14,7 +14,7 @@ scrapeSequence.py – This walks through a series of mortgages, calling scrapeRe
 These are some instructions to get you started:
 <h3>SQL Database</h3>
 In your SQL database run the following query to create the table<br />
-'''CREATE TABLE `mortgages` (
+```CREATE TABLE `mortgages` (
   `url` varchar(500) NOT NULL DEFAULT '',
   `lender` text NOT NULL,
   `typeOfMortgage` text NOT NULL,
@@ -36,7 +36,7 @@ In your SQL database run the following query to create the table<br />
   `valuationReport` text NOT NULL,
   `homebuyerSurvey` text NOT NULL,
   PRIMARY KEY (`url`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;'''
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;```
 Edit the SQL connection details in the mortgage.py file to point it to your SQL database.
 
 <h3>Changing the mortgage amount</h3>
