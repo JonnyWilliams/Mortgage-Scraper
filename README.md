@@ -35,6 +35,7 @@ CREATE TABLE `mortgages` (
   `portable` text NOT NULL,
   `cashback` text NOT NULL,
   `booking` text NOT NULL,
+  `completion` text NOT NULL,
   `valuationReport` text NOT NULL,
   `homebuyerSurvey` text NOT NULL,
   PRIMARY KEY (`url`)

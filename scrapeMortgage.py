@@ -52,6 +52,7 @@ class scrapeMortgage:
         
         #product cost and fees
         self.aMor.booking = self.extractBooking()
+        self.aMor.completion = self.extractCompletion()
         
         #survey fees
         self.aMor.valuationReport = self.extractValuationReport()
@@ -167,8 +168,22 @@ class scrapeMortgage:
             booking = str.contents[0]
             return booking
         except:
-            return ""
+            try:
+                str = self.soup.find('span',attrs={"data-productattribute" : "ARRANGEMENT"})
+                booking = str.contents[0]
+                return booking
+            except:
+                return ""
         
+    def extractCompletion(self):
+        
+        try:
+            str = self.soup.find('span',attrs={"data-productattribute" : "COMPLETION"})
+            completion = str.contents[0]
+            return completion
+        except:
+            return ""
+                
     def extractValuationReport(self):
 
         try:

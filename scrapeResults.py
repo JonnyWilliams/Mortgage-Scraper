@@ -66,18 +66,19 @@ class scrapeResult:
     def extractResultURLs(self):
     
         resultpages = []
+        temp = []
 
         for results_wrapper in self.soup.find_all("ul", class_="results-table"):
             for result in results_wrapper.find_all("li", class_="actions"):
-                link = result.findAll("p")[2]
-                for li in link.find_all('a'):
-                    link2 = li.get('href')
-                    if link2 is None:
-                        pass
-                    else:
-                        resultpages.append("http://www.moneysupermarket.com"+link2)
+                for a in result.find_all('a', href=True):
+                    temp.append(a['href'])
+                
+        for link in temp:
+            if link.startswith("/mortgages/details/"):
+                resultpages.append("http://www.moneysupermarket.com"+link)
         
         print resultpages
+        print len(resultpages)
         return resultpages
 
     def extractMoreLink(self): #to-do - make code click the more link, but don't really need it for now

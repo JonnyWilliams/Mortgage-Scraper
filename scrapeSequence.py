@@ -26,11 +26,12 @@ while url != None:
         try:
             sa.aMor.save()
         except _mysql_exceptions.IntegrityError:
-            print "** Mortgage " + sa.anAd.url + " already saved **"
+            print "** Mortgage " + sa.aMor.url + " already saved **"
         sa.onAd = ""
 
     url = ""
     try:
+        #to-do - make code click the more link, but don't really need it for now
         if sl.aMortgage.nextLink:
             print "nextLink = "+sl.aMortgage.nextLink
             url = sl.aMortgage.nextLink    
