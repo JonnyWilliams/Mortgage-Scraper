@@ -4,11 +4,11 @@ MoneySupermarket.com Mortgage Scraper is written in Python. The code scrapes Mor
 I created this code as I wanted to buy my first house. I wanted to keep an eye on the mortgage offerings so I could keep an eye on the market trends. I could then easily run some queries to compare mortgages to find the best deal.
  
 <h2>The source files</h2>
-mortgage.py – Stores all information about each mortgage offering, with a ‘save’ method that inserts the data into the sql database.<br />
-results.py – Stores all the information on each results page, which is broken down into links for specific mortgages, and also the link to the more results page in the sequence (ie: the ‘show more’ link).<br />
-scrapeMortgage.py – When given an mortgage URL, this creates and populates an mortgage object.<br />
-scrapeResults.py – When given a mortgage URL, this creates and populates a results object.<br />
-scrapeSequence.py – This walks through a series of mortgages, calling scrapeResults and scrapeMortgage for all of them.<br />
+<b>mortgage.py</b> – Stores all information about each mortgage offering, with a ‘save’ method that inserts the data into the sql database.<br />
+<b>results.py</b> – Stores all the information on each results page, which is broken down into links for specific mortgages, and also the link to the more results page in the sequence (ie: the ‘show more’ link).<br />
+<b>scrapeMortgage.py</b> – When given an mortgage URL, this creates and populates an mortgage object.<br />
+<b>scrapeResults.py</b> – When given a mortgage URL, this creates and populates a results object.<br />
+<b>scrapeSequence.py</b> – This walks through a series of mortgages, calling scrapeResults and scrapeMortgage for all of them.<br />
 
 <h2>Instructions for use</h2>
 These are some instructions to get you started:
