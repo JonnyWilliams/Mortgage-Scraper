@@ -52,8 +52,7 @@ class scrapeMortgage:
         self.aMor.cashback = self.extractCashback()
         
         #product cost and fees
-        self.aMor.booking = self.extractBooking()
-        self.aMor.completion = self.extractCompletion()
+        self.aMor.fees = self.extractFees()
         
         #survey fees
         self.aMor.valuationReport = self.extractValuationReport()
@@ -135,7 +134,10 @@ class scrapeMortgage:
         sec = self.soup.findAll("div", { "class" : "info-panel" })[1]
         table = sec.find("table", { "class" : "dash-table" })
         interest = table.findAll("span")[3].contents[0]
-        return interest
+        
+        non_decimal = re.compile(r'[^\d.]+')
+        interest2 = non_decimal.sub('', interest)
+        return interest2
 
     def extractOverpayments(self):
         
@@ -165,28 +167,34 @@ class scrapeMortgage:
         cashback = table.get("class")[0]
         return cashback
 
-    def extractBooking(self):
+    def extractFees(self):
         
         try:
             str = self.soup.find('span',attrs={"data-productattribute" : "BOOKING"})
-            booking = str.contents[0]
-            return booking
+            booking1 = str.contents[0]
+            non_decimal = re.compile(r'[^\d.]+')
+            booking = non_decimal.sub('', booking1)
         except:
-            try:
-                str = self.soup.find('span',attrs={"data-productattribute" : "ARRANGEMENT"})
-                booking = str.contents[0]
-                return booking
-            except:
-                return ""
-        
-    def extractCompletion(self):
-        
+            booking = 0
+            
+        try:
+            str = self.soup.find('span',attrs={"data-productattribute" : "ARRANGEMENT"})
+            arrangement1 = str.contents[0]
+            non_decimal = re.compile(r'[^\d.]+')
+            arrangement = non_decimal.sub('', arrangement1)
+        except:
+            arrangement = 0
+            
         try:
             str = self.soup.find('span',attrs={"data-productattribute" : "COMPLETION"})
-            completion = str.contents[0]
-            return completion
+            completion1 = str.contents[0]
+            non_decimal = re.compile(r'[^\d.]+')
+            completion = non_decimal.sub('', completion1)
         except:
-            return ""
+            completion = 0
+        
+        fees = int(booking) + int(arrangement) + int(completion)
+        return unicode(fees)
                 
     def extractValuationReport(self):
 

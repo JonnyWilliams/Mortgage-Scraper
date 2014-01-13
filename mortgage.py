@@ -43,11 +43,11 @@ class mortgage:
         db=MySQLdb.connect(host="127.0.0.1", user="root", db="JonnyTest")
         c=db.cursor()
 
-        #self.description = unicode(self.description, errors='replace')
-        #self.description = self.description.encode('ascii','ignore')
-        #self.title = self.title.encode('ascii','ignore')
+        #self.fees = unicode(self.fees, errors='replace')
+        #self.fees = self.fees.encode('ascii','ignore')
+        #self.fees = self.title.encode('ascii','ignore')
         # TODO: might need to convert the other strings in the advert if there are any unicode conversetion errors
 
-        sql = "INSERT INTO mortgages (url,lender,typeOfMortgage,initialRate,revertRate,maxLTV,initialPeriod,minMaxMortgageAmount,minimumAge,initialMonthlyRepayments,monthlyRepaymentsAfter,totalAmountToRepay,TotalAmountOfInterest,overpayments,paymentHolidays,portable,cashback,booking,completion,valuationReport,homebuyerSurvey) VALUES('"+self.url+"','"+self.lender+"','"+self.typeOfMortgage+"','"+self.initialRate+"','"+self.revertRate+"','"+self.maxLTV+"','"+self.initialPeriod+"','"+self.minMaxMortgageAmount+"','"+self.minimumAge+"','"+self.initialMonthlyRepayments+"','"+self.monthlyRepaymentsAfter+"','"+self.totalAmountToRepay+"','"+self.TotalAmountOfInterest+"','"+self.overpayments+"','"+self.paymentHolidays+"','"+self.portable+"','"+self.cashback+"','"+self.booking+"','"+self.completion+"','"+self.valuationReport+"','"+self.homebuyerSurvey+"' )"
+        sql = "INSERT INTO mortgages (url,lender,typeOfMortgage,initialRate,revertRate,maxLTV,initialPeriod,minMaxMortgageAmount,minimumAge,initialMonthlyRepayments,monthlyRepaymentsAfter,totalAmountToRepay,TotalAmountOfInterest,overpayments,paymentHolidays,portable,cashback,fees,valuationReport,homebuyerSurvey) VALUES('"+self.url+"','"+self.lender+"','"+self.typeOfMortgage+"','"+self.initialRate+"','"+self.revertRate+"','"+self.maxLTV+"','"+self.initialPeriod+"','"+self.minMaxMortgageAmount+"','"+self.minimumAge+"','"+self.initialMonthlyRepayments+"','"+self.monthlyRepaymentsAfter+"','"+self.totalAmountToRepay+"','"+self.TotalAmountOfInterest+"','"+self.overpayments+"','"+self.paymentHolidays+"','"+self.portable+"','"+self.cashback+"','"+self.fees+"','"+self.valuationReport+"','"+self.homebuyerSurvey+"' )"
         print sql
         c.execute(sql)
