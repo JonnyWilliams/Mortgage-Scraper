@@ -192,8 +192,24 @@ class scrapeMortgage:
             completion = non_decimal.sub('', completion1)
         except:
             completion = 0
+            
+        try:
+            str = self.soup.find('span',attrs={"data-productattribute" : "ARRANGEMENTADMINISTRATION"})
+            arradmin1 = str.contents[0]
+            non_decimal = re.compile(r'[^\d.]+')
+            arradmin = non_decimal.sub('', arradmin1)
+        except:
+            arradmin = 0
+            
+        try:
+            str = self.soup.find('span',attrs={"data-productattribute" : "RESERVATION"})
+            reservation1 = str.contents[0]
+            non_decimal = re.compile(r'[^\d.]+')
+            reservation = non_decimal.sub('', reservation1)
+        except:
+            reservation = 0                    
         
-        fees = int(booking) + int(arrangement) + int(completion)
+        fees = int(booking) + int(arrangement) + int(completion) + int(arradmin) + int(reservation)
         return unicode(fees)
                 
     def extractValuationReport(self):
