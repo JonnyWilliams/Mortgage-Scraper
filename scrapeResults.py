@@ -77,8 +77,6 @@ class scrapeResult:
             if link.startswith("/mortgages/details/"):
                 resultpages.append("http://www.moneysupermarket.com"+link)
         
-        print resultpages
-        print len(resultpages)
         return resultpages
 
     def extractMoreLink(self): #to-do - make code click the more link, but don't really need it for now
