@@ -17,6 +17,8 @@ In your SQL database run the following query to create the table<br />
 
 ```sql
 CREATE TABLE `mortgages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `rundate` date DEFAULT NULL,
   `url` varchar(500) NOT NULL DEFAULT '',
   `lender` text NOT NULL,
   `typeOfMortgage` text NOT NULL,
@@ -37,8 +39,8 @@ CREATE TABLE `mortgages` (
   `fees` decimal(10,2) NOT NULL,
   `valuationReport` text NOT NULL,
   `homebuyerSurvey` text NOT NULL,
-  PRIMARY KEY (`url`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 ```
 
 Edit the SQL connection details in the mortgage.py file to point it to your SQL database.
