@@ -14,17 +14,20 @@ from bs4 import BeautifulSoup
 import urllib2
 
 url = "http://www.moneysupermarket.com/mortgages/search/results/?goal=MOR_FTB"
+borrowAmount = '110000'
+houseValue = '190000'
+term = '25'
 
 while url != None:
     sl = ""
     sl = scrapeResult()
-    sl.scrape(url)
+    sl.scrape(url,borrowAmount,houseValue,term)
     for mortgageURL in sl.aMortgage.resulturls:
         sa = ""
         sa = scrapeMortgage()
         sa.scrape(mortgageURL)
         try:
-            sa.aMor.save()
+            sa.aMor.save(borrowAmount,houseValue,term)
         except _mysql_exceptions.IntegrityError:
             print "** Mortgage " + sa.aMor.url + " already saved **"
         sa.onAd = ""

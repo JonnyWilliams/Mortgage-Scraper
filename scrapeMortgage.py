@@ -18,7 +18,7 @@ class scrapeMortgage:
 
     def scrape(self,mortgageURL):
 
-        # give it a bit of time so gumtree doesn't
+        # give it a bit of time so moneysupermarket.com doesn't
         # ban us
         time.sleep(2)
 
@@ -57,6 +57,7 @@ class scrapeMortgage:
         #survey fees
         self.aMor.valuationReport = self.extractValuationReport()
         self.aMor.homebuyerSurvey = self.extractHomebuyerSurvey()
+
         
     def extractLender(self):
 

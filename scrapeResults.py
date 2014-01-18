@@ -13,11 +13,15 @@ class scrapeResult:
     
     soup = ""    
     url = ""
+    borrowAmount = ""
+    houseValue = ""
+    term = ""
     aMortgage = ""
 
-    def scrape(self,url):
-
-        print "scraping url = "+str(url)
+    def scrape(self,url,borrowAmount,houseValue,term):
+        
+        #print "scraping url = "+str(url)
+        print "Scraping Mortgages with BorrowAmount = "+str(borrowAmount)+", House Value = "+str(houseValue)+", Term = "+str(term)+" Years"
 
         br = mechanize.Browser()
 
@@ -31,9 +35,9 @@ class scrapeResult:
         form = br.form
          
         form['goalId'] = ['MOR_FTB'] #dropdown box must be a list so enclose with []
-        form["houseValue"] = '190000'
-        form["borrowAmount"] = '110000'
-        form["term"] = '25'
+        form["houseValue"] = houseValue
+        form["borrowAmount"] = borrowAmount
+        form["term"] = term
          
         form["repaymentType"] = ['capitalandinterest'] #dropdown box must be a list so enclose with []
         

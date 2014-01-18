@@ -18,10 +18,13 @@ In your SQL database run the following query to create the table<br />
 ```sql
 CREATE TABLE `mortgages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `rundate` date DEFAULT NULL,
+  `rundate` date NOT NULL,
   `url` varchar(500) NOT NULL DEFAULT '',
   `lender` text NOT NULL,
   `typeOfMortgage` text NOT NULL,
+  `borrowAmount` decimal(10,2) NOT NULL,
+  `houseValue` decimal(10,2) NOT NULL,
+  `term` int(2) NOT NULL,
   `initialRate` text NOT NULL,
   `revertRate` text NOT NULL,
   `maxLTV` text NOT NULL,
@@ -40,13 +43,13 @@ CREATE TABLE `mortgages` (
   `valuationReport` text NOT NULL,
   `homebuyerSurvey` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 ```
 
 Edit the SQL connection details in the mortgage.py file to point it to your SQL database.
 
-<h3>Changing the mortgage amount</h3>
-You can change the mortgage amount and search parameters in the scrapeResults.py file
+<h3>Setting "Borrow Amount", "House Value", and "Mortgage Term" values</h3>
+You can change the "Borrow Amount", "House Value", and "Mortgage Term" parameters in the scrapeSequence.py file.
 
 <h3>Running the scraper</h3>
 To run, run the scrapeSequence.py file
